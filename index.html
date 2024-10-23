@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+
+        #ptag {
+            text-align: center;
+            width: 100%;
+            display: block;
+            POSITION: absolute;
+            bottom: 118px;
+            font-size: 40px;
+            color: white;
+            font-weight: 600;
+        }
+
+        .yellowDiv {
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 214, 0, 1);
+            margin: auto;
+
+        }
+
+        .gameRules {
+            width: 278px;
+            height: 325px;
+            border-radius: 13px;
+            border: 7px solid white;
+            opacity: 0px;
+            background: rgba(0, 68, 41, 1);
+            position: absolute;
+            right: 20px;
+            bottom: 100px;
+            display: none;
+
+
+        }
+
+        #playAgainGame {
+            width: 174px;
+            height: 44px;
+            border-radius: 9px;
+            opacity: 0px;
+            position: absolute;
+            background: rgba(140, 196, 97, 1);
+            border: 2px solid white;
+            position: absolute;
+            top: 90%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+
+        }
+
+        #imgHurray {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #imgStar {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .btnNext {
+            position: absolute;
+            right: 170px;
+            bottom: 20px;
+        }
+
+        .btnRule {
+            width: 119px;
+            height: 40px;
+            gap: 0px;
+            border-radius: 10px;
+            border: 2px solid white;
+            opacity: 0px;
+            background: rgba(140, 196, 97, 1);
+            color: white;
+
+        }
+
+        .btnRulePos {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .painttext {
+            font-family: Roboto;
+            font-size: 39px;
+            font-weight: 800;
+            line-height: 45.7px;
+            letter-spacing: 0.1em;
+            text-align: center;
+            color: white;
+
+        }
+
+        .btn {
+            width: 174px;
+            height: 44px;
+            left: 570px;
+            gap: 0px;
+            border-radius: 9px;
+            opacity: 0px;
+            border: none;
+            background-color: white;
+            color: black;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .btnReplay {
+            width: 174px;
+            height: 44px;
+            left: 570px;
+            gap: 0px;
+            border-radius: 9px;
+            opacity: 0px;
+            border: none;
+            background-color: white;
+            color: black;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .my-custom-class {
+            font-family: Roboto;
+            font-size: 39px;
+            font-weight: 800;
+            line-height: 45.7px;
+            letter-spacing: 0.1em;
+            text-align: center;
+            color: rgba(255, 255, 255, 1);
+
+
+        }
+
+        .parent {
+            background: rgba(140, 196, 97, 1);
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+        }
+
+        #HurrayShow {
+            background: rgba(140, 196, 97, 1);
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+        }
+
+        .headerScore {
+            width: 800px;
+            height: 158px;
+            gap: 0px;
+            border-radius: 13px;
+            border: 2px 0px 0px 0px;
+            opacity: 0px;
+            border: 2px solid rgba(255, 255, 255, 1);
+            display: flex;
+            justify-content: space-between;
+            margin-top: 62px;
+            margin-bottom: 30px;
+        }
+
+        .RockPaperText {
+            font-family: Roboto;
+            font-size: 40px;
+            font-weight: 600;
+            line-height: 46.88px;
+            letter-spacing: 0.1em;
+            text-align: left;
+            color: rgba(255, 255, 255, 1);
+            margin-left: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .RockPaperTextChild {
+            width: 139px;
+            height: 128px;
+            gap: 0px;
+            border-radius: 9px;
+            opacity: 0px;
+            background: rgba(255, 255, 255, 1);
+            margin-right: 25px;
+            font-family: Roboto;
+            font-size: 19px;
+            font-weight: 600;
+            line-height: 19.92px;
+            letter-spacing: 0.1em;
+            text-align: center;
+
+        }
+
+        .RockPaperTextChild p:first-child {
+            margin-top: 10px;
+        }
+
+        .RockPaperTextChild p:last-child {
+            margin-top: 20px;
+        }
+
+        .container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+        }
+
+        .circle {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            border: 5px solid;
+            z-index: 1;
+        }
+
+        .circleWin {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 5px solid;
+            z-index: 1;
+        }
+
+        .circle2 {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background-color: white;
+            border: 16px solid rgba(0, 116, 182, 1);
+        }
+
+        .circle2 img {
+            width: 100%;
+        }
+
+        .rock {
+            top: 10px;
+            left: -25px;
+            border: 16px solid rgba(0, 116, 182, 1)
+        }
+
+        .paper {
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 16px solid rgba(255, 169, 67, 1)
+        }
+
+        .scissors {
+            top: 10px;
+            right: -25px;
+            border: 16px solid rgba(189, 0, 255, 1)
+        }
+
+        .rockwin {
+
+            border: 16px solid rgba(0, 116, 182, 1)
+        }
+
+        .paperwin {
+
+            border: 16px solid rgba(255, 169, 67, 1)
+        }
+
+        .scissorswin {
+
+            border: 16px solid rgba(189, 0, 255, 1)
+        }
+
+        .circle img {
+            width: 100%;
+            height: 80%;
+            object-fit: contain;
+        }
+
+        .line {
+            position: absolute;
+            height: 5px;
+            border: 15px solid rgba(0, 0, 0, 0.6)
+        }
+
+        .line1 {
+            width: 220px;
+            top: 142px;
+            left: -25px;
+            transform: rotate(60deg);
+        }
+
+        .line2 {
+            width: 220px;
+            top: 142px;
+            right: -25px;
+            transform: rotate(-60deg);
+        }
+
+        .line3 {
+            width: 160px;
+            left: 70px;
+            top: 63px;
+        }
+
+
+        .container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Media Querry */
+        @media only screen and (max-width: 768px) {
+            .headerScore {
+                width: 450px;
+                height: 120px;
+                margin-top: 20px;
+                margin-bottom: 80px;
+            }
+
+            .RockPaperText {
+                font-size: 20px;
+                line-height: 30.88px;
+                margin-left: 10px;
+                font-weight: 800;
+            }
+
+            .RockPaperTextChild {
+                width: 120px;
+                margin-right: 15px;
+                height: 120px;
+                font-size: 16px;
+                font-weight: 800;
+            }
+
+        }
+
+        @media only screen and (max-width: 450px) {
+
+            .painttext {
+                top: 202%;
+                left: 62%;
+                transform: translate(-50%, -50%);
+                width: 100%;
+            }
+
+            .painttext1 {
+                top: 61%;
+                left: 79%;
+                transform: translate(-50%, -50%);
+                width: 100%;
+            }
+
+            .headerScore {
+                width: 300px;
+                height: 120px;
+                padding-top: 20px;
+                margin-bottom: 0px;
+            }
+
+            .RockPaperText {
+                font-size: 16px;
+                line-height: 28.88px;
+                margin-left: 10px;
+            }
+
+            .RockPaperTextChild {
+                width: 80px;
+                margin-right: 15px;
+                height: 80px;
+                font-size: 12px;
+                font-weight: 800;
+
+            }
+
+            .RockPaperTextChild p:first-child {
+                margin-top: 5px;
+            }
+
+            .RockPaperTextChild p:last-child {
+                margin-top: 7px;
+            }
+
+            .rock {
+                top: 10px;
+                left: 10px;
+                border: 16px solid rgba(0, 116, 182, 1)
+            }
+
+            .paper {
+                bottom: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+                border: 16px solid rgba(255, 169, 67, 1)
+            }
+
+            .scissors {
+                top: 10px;
+                right: 10px;
+                border: 16px solid rgba(189, 0, 255, 1)
+            }
+        }
+    </style>
+    <div class="parent" id="parent">
+        <div style="width: 100%; display: flex; justify-content: center;">
+            <div class="headerScore">
+                <div class="RockPaperText">
+                    ROCK <br> PAPER <br> SCISSORS
+                </div>
+                <div style="display: flex; justify-content: space-between;align-items: center;">
+                    <div class="RockPaperTextChild">
+                        <p>COMPUTER</p>
+                        <p>SCORE</p>
+                        <p id="computerScore" style="font-size:34px; font-weight:bold;">0</p>
+                    </div>
+                    <div class="RockPaperTextChild">
+                        <p>YOUR</p>
+                        <p>SCORE</p>
+                        <p id="myScore" style="font-size:34px; font-weight:bold;">0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container" id="containerID">
+            <div id="rock" class="circle rock" style="border: 16px solid rgba(0, 116, 182, 1);">
+                <img style="width: 100%;" onclick="CheckResult('rock')" src="./images/icons8-fist-67 1@2x.png"
+                    alt="Rock">
+            </div>
+            <div id="scissors" class="circle scissors" style="border: 16px solid rgba(255, 169, 67, 1); ">
+                <img style="height: 70%;" onclick="CheckResult('scissors')" src="./images/icons8-hand-64 1.png">
+            </div>
+
+            <div id="paper" class="circle paper" style="  border: 16px solid rgba(189, 0, 255, 1);">
+                <img style="width: 100%;" onclick="CheckResult('paper')" src="./images/17911 1.png" alt="paper">
+            </div>
+            <div class="line line1"></div>
+            <div class="line line2"></div>
+            <div class="line line3"></div>
+        </div>
+
+        <div style="width: 100%;display: flex;justify-content: center;position: relative;">
+            <div style="display: none; position: absolute;" class="painttext" id="ShowMyWin">
+                <p>YOU WIN <br> AGAINS PC</p>
+            </div>
+            <div style="display: none; position: absolute;" class="painttext" id="ShowMyLoos">
+                <p>YOU LOST <br> AGAINS PC</p>
+            </div>
+
+            <div id="winDiv" style="display: none; justify-content: space-around;width: 80%;margin-top: 34px;">
+                <div class="circleWin rockwin" style="display: none;" id="RWin"><img style="width: 100%;"
+                        src="./images/icons8-fist-67 1@2x.png" alt=""></div>
+                <div class="circleWin scissorswin" id="PWin" style="display: none;"><img
+                        src="./images/icons8-hand-64 1.png" alt=""></div>
+                <div class="circleWin paperwin" id="SWin" style="display: none;"><img src="./images/17911 1.png" alt="">
+                </div>
+            </div>
+        </div>
+
+        <div class="containerSame" id="containerSame" style="display: none; width: 100%;justify-content: center;">
+            <div style="display: none; position: absolute;" class="painttext painttext1" id="ShowMyTie">
+                <p>TIE UP</p>
+            </div>
+            <div id="ShowRockWins" style="display: none;justify-content: space-around;width: 80%;">
+                <div class="circleWin" style=" border: 16px solid rgba(0, 116, 182, 1)"><img style="width: 100%;"
+                        src="./images/icons8-fist-67 1@2x.png" alt=""></div>
+                <div class="circleWin" style=" border: 16px solid rgba(0, 116, 182, 1)"><img style="width: 100%;"
+                        src="./images/icons8-fist-67 1@2x.png" alt=""></div>
+            </div>
+            <div id="PhowPaperWins" style="display: none;justify-content: space-around;width: 80%;">
+                <div class="circleWin" style="border: 16px solid rgba(189, 0, 255, 1)"><img
+                        src="./images/17911 1.png" alt=""></div>
+                <div class="circleWin" style="border: 16px solid rgba(189, 0, 255, 1)"><img
+                        src="./images/17911 1.png" alt=""></div>
+            </div>
+            <div id="SShowSicciorsWins" style="display: none;justify-content: space-around;width: 80%;">
+                <div class="circleWin" style=" border: 16px solid rgba(255, 169, 67, 1)"><img src="./images/icons8-hand-64 1.png"
+                        alt=""></div>
+                <div class="circleWin" style=" border: 16px solid rgba(255, 169, 67, 1)"><img src="./images/icons8-hand-64 1.png"
+                        alt=""></div>
+            </div>
+        </div>
+
+        <div style="display: none;justify-content: center;" id="btn" onclick="playAgain()">
+            <button class="btn" style="font-size: 15px;font-weight: 600;">PLAY AGAIN</button>
+        </div>
+        <div style="display: none;justify-content: center;" id="btnReplay" onclick="playAgainReplay()">
+            <button class="btnReplay" style="font-size: 15px;font-weight: 600;">REPLAY</button>
+        </div>
+        <div class="gameRules" id="gameRuleShow" style="display: none; color: white;">
+            <p style="font-size: 29px;color: white;text-align: center;line-height: 40px;">Game Rules</p>
+            <div style="display: flex;align-items: center;height: 50px;">
+                <div style="width: 10%;">
+                    <div class="yellowDiv"></div>
+                </div>
+                <p style="width: 90%;font-size: 14px;">Rock beats scissors, scissors beat <br> paper, and paper beats
+                    rock.</p>
+            </div>
+            <div style="display: flex;align-items: center;height: 50px;">
+                <div style="width: 10%;">
+                    <div class="yellowDiv"></div>
+                </div>
+                <p style="width: 90%;font-size: 14px;">Agree ahead of time whether you’ll <br> count off “rock, paper,
+                    scissors, <br> shoot” or just “rock,
+                    paper, scissors.”</p>
+            </div>
+            <div style="display: flex;align-items: center;height: 50px;">
+                <div style="width: 10%;">
+                    <div class="yellowDiv"></div>
+                </div>
+                <p style="width: 90%;font-size: 14px;">Use rock, paper, scissors to settle <br> minor decisions or
+                    simply play to <br> pass the time</p>
+            </div>
+            <div style="display: flex;align-items: center;height: 50px;">
+                <div style="width: 10%;">
+                    <div class="yellowDiv"></div>
+                </div>
+                <p style="width: 90%;font-size: 14px;">If both players lay down the same <br> hand, each player lays
+                    down another hand</p>
+            </div>
+        </div>
+        <div class="btnRulePos">
+            <button class="btnRule" onclick="showgameRule()">RULE</button>
+        </div>
+        <div class="btnNext" onclick="next()">
+            <button type="button" class="btnRule" onclick="next()">NEXT</button>
+        </div>
+
+    </div>
+
+    <div id="HurrayShow">
+        <img style="display: none;" id="imgStar" src="./images/Group 5.png" alt="">
+        <img style="display: none;" id="imgHurray" src="./images/Vector.png" alt="">
+        <p style="text-align: center;width: 100%;" id="ptag">HURRAY <br> YOU WON THE GAME</p>
+        <button type="button" class="" id="playAgainGame" onclick="playAgainHurray()">PLAY AGAIN</button>
+    </div>
+
+    <script src="script.js"></script>
+  
+</body>
+
+</html>
